@@ -61,6 +61,7 @@ export function useAdminStore() {
 
   const login = useCallback(async (id: string, password: string): Promise<boolean> => {
     try {
+      setIsLoading(true);
       const res = await fetch(`/api/admin/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -80,6 +81,8 @@ export function useAdminStore() {
     } catch (e) {
       console.error("Admin login failed", e)
       return false
+    }finally{
+      setIsLoading(false)
     }
   }, [])
 

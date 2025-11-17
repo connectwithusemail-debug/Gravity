@@ -11,7 +11,7 @@ export function AdminLoginForm() {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
-  const { login } = useAdminStore()
+  const { login,isLoading } = useAdminStore()
   const router = useRouter()
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -55,8 +55,8 @@ export function AdminLoginForm() {
           />
         </div>
         {error && <p className="text-red-500 text-sm">{error}</p>}
-        <MagicButton type="submit" className="w-full" heightClass="h-11">
-          Login
+        <MagicButton type="submit" disabled={isLoading} className="w-full" heightClass="h-11">
+          {!isLoading?"Login":"Loading..."}
         </MagicButton>
       </form>
     </div>
