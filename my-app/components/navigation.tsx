@@ -14,7 +14,6 @@ export function Navigation() {
     { href: "/projects", label: "Projects" },
     { href: "/blogs", label: "Blogs" },
     { href: "/contact", label: "Contact" },
-    { href: "/admin", label: "Admin" },
   ]
   return (
     <nav className="sticky top-0 z-50 backdrop-blur-md bg-background/80 border-b border-border">

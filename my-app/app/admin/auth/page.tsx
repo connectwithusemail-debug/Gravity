@@ -28,7 +28,6 @@ export default function AdminPage() {
   }
 
   if (isLoggedIn) {
-    // Render a minimal placeholder while redirecting
     return (
       <main className="min-h-screen flex items-center justify-center bg-background">
         <p className="text-foreground/60">Redirecting…</p>

@@ -1,51 +1,53 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { Navigation } from "@/components/navigation"
-import { Footer } from "@/components/footer"
-import { useState } from "react"
-import { Mail, MapPin, MessageSquare } from "lucide-react"
-import MagicButton from "@/components/magic-button"
+import { Navigation } from "@/components/navigation";
+import { Footer } from "@/components/footer";
+import { useState } from "react";
+import { Mail, MapPin, MessageSquare } from "lucide-react";
+import MagicButton from "@/components/magic-button";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
-  })
-  const [submitted, setSubmitted] = useState(false)
-  const [sending, setSending] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+  });
+  const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setError(null)
-    setSending(true)
+    e.preventDefault();
+    setError(null);
+    setSending(true);
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
-      })
-      const data = await res.json().catch(() => ({}))
+      });
+      const data = await res.json().catch(() => ({}));
       if (!res.ok || !data?.ok) {
-        throw new Error(data?.error || "Failed to send message")
+        throw new Error(data?.error || "Failed to send message");
       }
-      setSubmitted(true)
-      setFormData({ name: "", email: "", message: "" })
-      setTimeout(() => setSubmitted(false), 4000)
+      setSubmitted(true);
+      setFormData({ name: "", email: "", message: "" });
+      setTimeout(() => setSubmitted(false), 4000);
     } catch (err: any) {
-      setError(err?.message || "Network error")
+      setError(err?.message || "Network error");
     } finally {
-      setSending(false)
+      setSending(false);
     }
-  }
+  };
 
   return (
     <>
@@ -54,8 +56,12 @@ export default function ContactPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           {/* Header */}
           <div className="text-center mb-16 slide-in-up">
-            <h1 className="text-5xl md:text-6xl font-bold gradient-text mb-4">Get In Touch</h1>
-            <p className="text-xl text-foreground/70">We'd love to hear from you</p>
+            <h1 className="text-5xl md:text-6xl font-bold gradient-text mb-4">
+              Get In Touch
+            </h1>
+            <p className="text-xl text-foreground/70">
+              We'd love to hear from you
+            </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12">
@@ -68,38 +74,33 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-bold text-lg mb-1">Email</h3>
-                    <p className="text-foreground/70">contact@gravitysociety.com</p>
+                    <p className="text-foreground/70">
+                      contact@gravitysociety.com
+                    </p>
                   </div>
                 </div>
               </div>
 
               <div className="card-glow p-6 hover:shadow-lg transition-all">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[var(--brand-from)] to-[var(--brand-to)] flex items-center justify-center shrink-0">
-                    <MapPin size={24} className="text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-lg mb-1">Location</h3>
-                    <p className="text-foreground/70">Your Campus, City</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="card-glow p-6 hover:shadow-lg transition-all">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[var(--brand-from)] to-[var(--brand-to)] flex items-center justify-center shrink-0">
+                  <div className="w-12 h-12 rounded-lg bg-linear-to-br from-(--brand-from) to-(--brand-to) flex items-center justify-center shrink-0">
                     <MessageSquare size={24} className="text-white" />
                   </div>
                   <div>
                     <h3 className="font-bold text-lg mb-1">Discord</h3>
-                    <p className="text-foreground/70">Join our community server</p>
+                    <p className="text-foreground/70">
+                      Join our community server
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Contact Form */}
-            <div className="card-glow p-8 slide-in-up" style={{ animationDelay: "0.1s" }}>
+            <div
+              className="card-glow p-8 slide-in-up"
+              style={{ animationDelay: "0.1s" }}
+            >
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label className="block text-sm font-medium mb-2">Name</label>
@@ -115,7 +116,9 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-2">Email</label>
+                  <label className="block text-sm font-medium mb-2">
+                    Email
+                  </label>
                   <input
                     type="email"
                     name="email"
@@ -128,7 +131,9 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-2">Message</label>
+                  <label className="block text-sm font-medium mb-2">
+                    Message
+                  </label>
                   <textarea
                     name="message"
                     value={formData.message}
@@ -140,8 +145,16 @@ export default function ContactPage() {
                   />
                 </div>
 
-                <MagicButton type="submit" className="w-full" heightClass="h-12">
-                  {sending ? "Sending…" : submitted ? "✓ Message Sent!" : "Send Message"}
+                <MagicButton
+                  type="submit"
+                  className="w-full"
+                  heightClass="h-12"
+                >
+                  {sending
+                    ? "Sending…"
+                    : submitted
+                    ? "✓ Message Sent!"
+                    : "Send Message"}
                 </MagicButton>
 
                 {error && (
@@ -158,43 +171,9 @@ export default function ContactPage() {
               )}
             </div>
           </div>
-
-          {/* FAQ Section */}
-          <div className="mt-20 slide-in-up">
-            <h2 className="text-3xl font-bold gradient-text mb-8 text-center">Frequently Asked Questions</h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              {[
-                {
-                  q: "How can I join Gravity?",
-                  a: "Fill out the contact form above and mention your interest in joining. Our team will reach out with more details!",
-                },
-                {
-                  q: "Is there a membership fee?",
-                  a: "Gravity is open to all students. There is no membership fee, just a passion for technology!",
-                },
-                {
-                  q: "Can I join multiple wings?",
-                  a: "We encourage members to explore different wings and expand their skills.",
-                },
-                {
-                  q: "When do you host events?",
-                  a: "Events are hosted regularly throughout the year. Check our Events page for the schedule!",
-                },
-              ].map((faq, index) => (
-                <div
-                  key={index}
-                  className="card-glow p-6 hover:shadow-lg transition-all"
-                  style={{ animationDelay: `${index * 0.05}s` }}
-                >
-                  <h3 className="font-bold text-lg mb-2">{faq.q}</h3>
-                  <p className="text-foreground/70 text-sm">{faq.a}</p>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </main>
       <Footer />
     </>
-  )
+  );
 }

@@ -45,7 +45,7 @@ export default function AdminDashboard() {
   useEffect(() => {
     if (authChecked && !isLoggedIn && !redirectedRef.current) {
       redirectedRef.current = true
-      router.replace("/admin")
+      router.replace("/admin/auth")
     }
   }, [authChecked, isLoggedIn, router])
 
