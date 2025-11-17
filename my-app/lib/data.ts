@@ -1,4 +1,11 @@
 import type { Wing, Member, Event, Project, BlogPost } from "./types"
+import CompetitiveCodingAnimation from "@/components/wing-animations/competitive-coding-animation"
+import WebDevAnimation from "@/components/wing-animations/web-dev-animation"
+import DesignAnimation from "@/components/wing-animations/design-animation"
+import FossAnimation from "@/components/wing-animations/foss-animation"
+import AIAnimation from "@/components/wing-animations/ai-animation"
+import BlockchainAnimation from "@/components/wing-animations/blockchain-animation"
+import MetaverseAnimation from "@/components/wing-animations/metaverse-animation"
 
 export const wings: Wing[] = [
   {
@@ -7,6 +14,7 @@ export const wings: Wing[] = [
     description: "Master algorithms and data structures through contests",
     icon: "⚡",
     color: "from-blue-500 to-cyan-500",
+    animationComponent: CompetitiveCodingAnimation,
   },
   {
     id: "2",
@@ -14,6 +22,7 @@ export const wings: Wing[] = [
     description: "Build modern web applications with cutting-edge technologies",
     icon: "🌐",
     color: "from-green-500 to-emerald-500",
+    animationComponent: WebDevAnimation,
   },
   {
     id: "3",
@@ -21,6 +30,7 @@ export const wings: Wing[] = [
     description: "Create stunning visual experiences and UI/UX designs",
     icon: "🎨",
     color: "from-pink-500 to-rose-500",
+    animationComponent: DesignAnimation,
   },
   {
     id: "4",
@@ -28,6 +38,7 @@ export const wings: Wing[] = [
     description: "Contribute to open-source software and communities",
     icon: "🔓",
     color: "from-yellow-500 to-orange-500",
+    animationComponent: FossAnimation,
   },
   {
     id: "5",
@@ -35,6 +46,7 @@ export const wings: Wing[] = [
     description: "Explore privacy-preserving AI and machine learning",
     icon: "🤖",
     color: "from-purple-500 to-violet-500",
+    animationComponent: AIAnimation,
   },
   {
     id: "6",
@@ -42,6 +54,7 @@ export const wings: Wing[] = [
     description: "Build decentralized applications and smart contracts",
     icon: "⛓️",
     color: "from-orange-500 to-red-500",
+    animationComponent: BlockchainAnimation,
   },
   {
     id: "7",
@@ -49,6 +62,7 @@ export const wings: Wing[] = [
     description: "Create immersive virtual reality and metaverse experiences",
     icon: "🌌",
     color: "from-indigo-500 to-purple-500",
+    animationComponent: MetaverseAnimation,
   },
 ]
 
