@@ -4,6 +4,7 @@ export interface Wing {
   description: string
   icon: string
   color: string
+  animationComponent?: React.ComponentType
 }
 
 export interface Member {
